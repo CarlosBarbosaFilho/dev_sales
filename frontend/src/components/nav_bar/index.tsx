@@ -1,5 +1,4 @@
 import React from 'react';
-import Financeiro from 'assets/img/mercado-financeiro.png';
 
 function Navbar() {
   return (
