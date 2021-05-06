@@ -4,6 +4,8 @@ import br.com.cbgomes.backend.domain.converters.ConverterSaleDTO;
 import br.com.cbgomes.backend.domain.dto.SaleDTO;
 import br.com.cbgomes.backend.service.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +27,7 @@ public class SaleController {
     }
 
     @GetMapping
-    public ResponseEntity<List<SaleDTO>> list(){
-        return ResponseEntity.ok(converterSaleDTO.convertToListDtos(this.service.sales()));
+    public ResponseEntity<Page<SaleDTO>> list(Pageable pageable){
+        return ResponseEntity.ok(converterSaleDTO.convertToListDtos(this.service.sales(pageable)));
     }
 }

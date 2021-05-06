@@ -1,5 +1,6 @@
 package br.com.cbgomes.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,6 +33,7 @@ public class Sale {
     @Column(name = "date")
     private LocalDate date;
 
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "seller_id")
     private Seller seller;

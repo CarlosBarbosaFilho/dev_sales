@@ -1,5 +1,6 @@
 package br.com.cbgomes.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Seller {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "seller")
+    @JsonBackReference
+    @OneToMany(mappedBy = "seller", fetch = FetchType.EAGER)
     private List<Sale> sales;
 }
