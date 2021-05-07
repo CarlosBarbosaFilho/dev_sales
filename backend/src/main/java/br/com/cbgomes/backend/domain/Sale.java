@@ -28,7 +28,7 @@ public class Sale {
     private Integer deals;
 
     @Column(name = "amount")
-    private Integer amount;
+    private Double amount;
 
     @Column(name = "date")
     private LocalDate date;
