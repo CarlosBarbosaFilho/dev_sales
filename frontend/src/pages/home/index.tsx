@@ -11,7 +11,7 @@ const Home = () => {
           <h1 className="display-4">Vendas Acme</h1>
           <p className="lead">Analise o desempenho das suas vendas por diferentes perspectivas</p>
         </div>
-        <Link className="btn btn-primary btn-lg" to="/dashboard">
+        <Link className="btn btn-primary btn-lg " to="/dashboard">
           Dashboard
         </Link>
       </div>
