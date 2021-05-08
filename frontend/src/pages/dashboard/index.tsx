@@ -3,13 +3,16 @@ import Footer from 'components/footer';
 import Table from 'components/tables';
 import BarChart from 'components/bar_chart';
 import DonutChart from 'components/donutChart';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   return (
     <>
       <div className="container my-md-2">
-        <Navbar />
-        <h2 className="text-primary">Vendas Acme</h2>
+        <Link to="/">
+          <h2 className="text-primary">Vendas Acme</h2>
+        </Link>
         <hr />
         <div className="row px-6">
           <div className="col-sm-6">
