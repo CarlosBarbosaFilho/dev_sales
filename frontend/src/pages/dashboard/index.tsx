@@ -1,4 +1,3 @@
-import Navbar from 'components/nav_bar';
 import Footer from 'components/footer';
 import Table from 'components/tables';
 import BarChart from 'components/bar_chart';
