@@ -1,4 +1,26 @@
-const table = () => {
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { BASE_URL } from "utils/requests";
+import {SalePage} from 'types/sale';
+import { formatLocalDate } from "utils/formatLocalDate";
+
+const Table = () => {
+
+  const [page, setPage] = useState<SalePage>({
+    first: true,
+    last: true,
+    number: 0,
+    totalElements: 0,
+    totalPages: 0
+  });
+ 
+  useEffect(()=>{
+    axios.get(`${BASE_URL}/v1/sales?page=0&size=10&short=data,desc`)
+      .then(response => {
+        setPage(response.data)
+      })
+  },[])
+
   return (
     <div className="table-responsive">
       <table className="table table-striped table-sm">
@@ -12,60 +34,19 @@ const table = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>22/04/2021</td>
-            <td>Barry Allen</td>
-            <td>34</td>
-            <td>25</td>
-            <td>15017.00</td>
-          </tr>
-          <tr>
-            <td>22/04/2021</td>
-            <td>Barry Allen</td>
-            <td>34</td>
-            <td>25</td>
-            <td>15017.00</td>
-          </tr>
-          <tr>
-            <td>22/04/2021</td>
-            <td>Barry Allen</td>
-            <td>34</td>
-            <td>25</td>
-            <td>15017.00</td>
-          </tr>
-          <tr>
-            <td>22/04/2021</td>
-            <td>Barry Allen</td>
-            <td>34</td>
-            <td>25</td>
-            <td>15017.00</td>
-          </tr>
-          <tr>
-            <td>22/04/2021</td>
-            <td>Barry Allen</td>
-            <td>34</td>
-            <td>25</td>
-            <td>15017.00</td>
-          </tr>
-          <tr>
-            <td>22/04/2021</td>
-            <td>Barry Allen</td>
-            <td>34</td>
-            <td>25</td>
-            <td>15017.00</td>
-          </tr>
-          <tr>
-            <td>22/04/2021</td>
-            <td>Barry Allen</td>
-            <td>34</td>
-            <td>25</td>
-            <td>15017.00</td>
-          </tr>
-          
+          { page.content?.map(s => (
+            <tr key={s.id}>
+              <td>{formatLocalDate(s.date, "dd/MM/yyyy")}</td>
+              <td>{s.seller.name}</td>
+              <td>{s.visited}</td>
+              <td>{s.deals}</td>
+              <td>{s.amount.toFixed(2)}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 }
 
-export default table
+export default Table
