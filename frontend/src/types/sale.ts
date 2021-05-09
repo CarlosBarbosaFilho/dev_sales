@@ -1,4 +1,5 @@
-import { Seller } from 'types/Seller'
+import { Seller } from "./seller"
+
 
 export type SaleAmount = {
   seller : string,
